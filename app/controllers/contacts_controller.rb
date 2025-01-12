@@ -46,6 +46,6 @@ class ContactsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def contact_params
-      params.expect(contact: [ :name, :email, :birthdate ])
+      params.expect(contact: [ :name, :email, :birthdate, :kind_id ])
     end
 end
