@@ -16,9 +16,18 @@ end
 end
 
 Contact.all.each do |contact|
-  Random.rand(3).times do |index|
+  Random.rand(1..3).times do |index|
     Phone.create!(
       number: Faker::PhoneNumber.phone_number,
-      contact: contact).save!
-    end
+      contact: contact
+    ).save!
+  end
+end
+
+Contact.all.each do |contact|
+  address = Address.create!(
+    street: Faker::Address.street_address,
+    city: Faker::Address.city,
+    contact: contact
+  ).save!
 end

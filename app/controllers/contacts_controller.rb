@@ -10,7 +10,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts/1
   def show
-    render json: @contact, include: [ kind: { only: :description }, phones: { only: [ :id, :number] } ]
+    render json: @contact, include: [ kind: { only: :description }, phones: { only: [ :id, :number] }, address: { only: [ :id, :street, :city ] } ]
   end
 
   # POST /contacts
@@ -46,6 +46,20 @@ class ContactsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def contact_params
-      params.expect(contact: [ :name, :email, :birthdate, :kind_id, phones_attributes: [ [ :id, :number, :_destroy  ] ] ])
+      params.expect(contact: [ 
+                              :name,
+                              :email,
+                              :birthdate,
+                              :kind_id,
+                              phones_attributes: [ [
+                                :id,
+                                :number,
+                                :_destroy  ] ],
+                              address_attributes: [ [
+                                :id,
+                                :street,
+                                :city,
+                                :contact_id
+                              ] ] ])
     end
 end
