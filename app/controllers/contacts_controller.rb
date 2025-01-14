@@ -5,9 +5,8 @@ class ContactsController < ApplicationController
   def index
     @contacts = Contact.all
 
-    render json: @contacts
+    render json: @contacts, include: [kind: { only: :description }, phones: { only: [ :id, :number] }, address: { only: [ :id, :street, :city ] }]
   end
-
   # GET /contacts/1
   def show
     render json: @contact, include: [ kind: { only: :description }, phones: { only: [ :id, :number] }, address: { only: [ :id, :street, :city ] } ]
@@ -55,11 +54,11 @@ class ContactsController < ApplicationController
                                 :id,
                                 :number,
                                 :_destroy  ] ],
-                              address_attributes: [ [
+                              address_attributes: [
                                 :id,
                                 :street,
                                 :city,
                                 :contact_id
-                              ] ] ])
+                              ] ])
     end
 end
