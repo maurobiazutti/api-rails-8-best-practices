@@ -13,7 +13,7 @@ gem "puma", ">= 5.0"
 # gem "bcrypt", "~> 3.1.7"
 
 # https://github.com/svenfuchs/rails-i18n
-gem 'rails-i18n', '~> 8.0.0'
+gem "rails-i18n", "~> 8.0.0"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -49,5 +49,5 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # https://github.com/faker-ruby/faker?tab=readme-ov-file#faker
-  gem 'faker'
+  gem "faker"
 end
