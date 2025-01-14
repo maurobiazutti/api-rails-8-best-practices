@@ -5,11 +5,11 @@ class ContactsController < ApplicationController
   def index
     @contacts = Contact.all
 
-    render json: @contacts, include: [ kind: { only: :description }, phones: { only: [ :id, :number ] }, address: { only: [ :id, :street, :city ] } ]
+    # render json: @contacts #, include: [ kind: { only: :description }, phones: { only: [ :id, :number ] }, address: { only: [ :id, :street, :city ] } ]
   end
   # GET /contacts/1
   def show
-    render json: @contact, include: [ kind: { only: :description }, phones: { only: [ :id, :number ] }, address: { only: [ :id, :street, :city ] } ]
+    # render json: @contact #, include: [ kind: { only: :description }, phones: { only: [ :id, :number ] }, address: { only: [ :id, :street, :city ] } ]
   end
 
   # POST /contacts
