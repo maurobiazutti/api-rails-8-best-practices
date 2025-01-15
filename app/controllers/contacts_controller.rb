@@ -1,4 +1,17 @@
 class ContactsController < ApplicationController
+  ######################## AUTENTICATION BASIC ########################
+  # To create a basic authentication
+  # include ActionController::HttpAuthentication::Basic::ControllerMethods
+  # http_basic_authenticate_with name: "mauro", password: "123456"
+  ######################## AUTENTICATION BASIC ########################
+
+  ######################## AUTENTICATION TOKEN ########################
+  # To create a token authentication
+  TOKEN = "mauro123"
+  include ActionController::HttpAuthentication::Token::ControllerMethods
+  before_action :authenticate
+  ######################## AUTENTICATION TOKEN ########################
+
   before_action :set_contact, only: %i[ show update destroy ]
 
   # GET /contacts
@@ -51,14 +64,23 @@ class ContactsController < ApplicationController
                               :birthdate,
                               :kind_id,
                               phones_attributes: [ [
-                                :id,
+                                # :id,
                                 :number,
                                 :_destroy  ] ],
                               address_attributes: [
-                                :id,
+                                # :id,
                                 :street,
-                                :city,
-                                :contact_id
+                                :city
+                                # :contact_id
                               ] ])
+    end
+
+    def authenticate
+      authenticate_or_request_with_http_token do |token, options|
+        ActiveSupport::SecurityUtils.secure_compare(
+          ::Digest::SHA256.hexdigest(token),
+          ::Digest::SHA256.hexdigest(TOKEN)
+        )
+      end
     end
 end
