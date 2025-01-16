@@ -31,5 +31,9 @@ module NotebookApi
 
     # config.i18n.load_path += Dir[Rails.root.join("my", "locales", "*.{rb,yml}")]
     # config.i18n.default_locale = :pt-BR
+    
+    config.session_store :cookie_store, key: '_notebook_api_session'
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use config.session_store, config.session_options
   end
 end

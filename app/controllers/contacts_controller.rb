@@ -7,12 +7,14 @@ class ContactsController < ApplicationController
 
   ######################## AUTENTICATION TOKEN ########################
   # To create a token authentication
-  TOKEN = "mauro123"
-  include ActionController::HttpAuthentication::Token::ControllerMethods
-  before_action :authenticate
+  # TOKEN = "mauro123"
+  # include ActionController::HttpAuthentication::Token::ControllerMethods
+  # before_action :authenticate
   ######################## AUTENTICATION TOKEN ########################
 
+  before_action :authenticate_user!
   before_action :set_contact, only: %i[ show update destroy ]
+
 
   # GET /contacts
   def index
@@ -75,12 +77,14 @@ class ContactsController < ApplicationController
                               ] ])
     end
 
-    def authenticate
-      authenticate_or_request_with_http_token do |token, options|
-        ActiveSupport::SecurityUtils.secure_compare(
-          ::Digest::SHA256.hexdigest(token),
-          ::Digest::SHA256.hexdigest(TOKEN)
-        )
-      end
-    end
+    ######################## AUTENTICATION TOKEN ########################
+    # def authenticate
+    #   authenticate_or_request_with_http_token do |token, options|
+    #     ActiveSupport::SecurityUtils.secure_compare(
+    #       ::Digest::SHA256.hexdigest(token),
+    #       ::Digest::SHA256.hexdigest(TOKEN)
+    #     )
+    #   end
+    # end
+    ######################## AUTENTICATION TOKEN ########################
 end
