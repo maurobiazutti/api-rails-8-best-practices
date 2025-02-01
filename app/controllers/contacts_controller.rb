@@ -18,8 +18,9 @@ class ContactsController < ApplicationController
 
   # GET /contacts
   def index
-    @contacts = Contact.all
+    @contacts = current_user.contacts
 
+    render json: { contacts: @contacts }, status: :ok
     # render json: @contacts #, include: [ kind: { only: :description }, phones: { only: [ :id, :number ] }, address: { only: [ :id, :street, :city ] } ]
   end
   # GET /contacts/1
@@ -65,6 +66,7 @@ class ContactsController < ApplicationController
                               :email,
                               :birthdate,
                               :kind_id,
+                              :user_id,
                               phones_attributes: [ [
                                 # :id,
                                 :number,

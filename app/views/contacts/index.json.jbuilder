@@ -6,7 +6,7 @@ json.data @contacts do |contact|
     json.email contact.email
     json.birthdate I18n.l(contact.birthdate)
   end
-  
+
   json.relationships do
     json.kind do
       json.data do

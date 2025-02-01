@@ -1,24 +1,3 @@
-# json.id @contact.id
-# json.name @contact.name
-# json.email @contact.email
-# json.birthdate @contact.birthdate
-
-# json.kind do
-#   json.id @contact.kind.id
-#   json.description @contact.kind.description
-# end
-
-# json.phones @contact.phones do |phone|
-#   json.id phone.id
-#   json.number phone.number
-# end
-
-# json.address  do 
-#   json.id @contact.address.id
-#   json.street @contact.address.street
-#   json.city @contact.address.city
-# end
-
 json.data do
   json.type "contacts"
   json.id @contact.id
@@ -26,6 +5,18 @@ json.data do
     json.name @contact.name
     json.email @contact.email
     json.birthdate I18n.l(@contact.birthdate)
+  end
+
+  json.relationships do
+    json.user do
+      json.data do
+        json.type "users"
+        json.id @contact.user.id
+        json.name @contact.user.name
+        json.email @contact.user.email
+        json.nickname @contact.user.nickname
+      end
+    end
   end
   
   json.relationships do
