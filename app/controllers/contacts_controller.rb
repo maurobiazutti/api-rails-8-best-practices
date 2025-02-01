@@ -68,25 +68,23 @@ class ContactsController < ApplicationController
                               :kind_id,
                               :user_id,
                               phones_attributes: [ [
-                                # :id,
                                 :number,
                                 :_destroy  ] ],
                               address_attributes: [
-                                # :id,
                                 :street,
                                 :city
                                 # :contact_id
                               ] ])
     end
 
-    ######################## AUTENTICATION TOKEN ########################
-    # def authenticate
-    #   authenticate_or_request_with_http_token do |token, options|
-    #     ActiveSupport::SecurityUtils.secure_compare(
-    #       ::Digest::SHA256.hexdigest(token),
-    #       ::Digest::SHA256.hexdigest(TOKEN)
-    #     )
-    #   end
-    # end
-    ######################## AUTENTICATION TOKEN ########################
+  ######################## AUTENTICATION TOKEN ########################
+  # def authenticate
+  #   authenticate_or_request_with_http_token do |token, options|
+  #     ActiveSupport::SecurityUtils.secure_compare(
+  #       ::Digest::SHA256.hexdigest(token),
+  #       ::Digest::SHA256.hexdigest(TOKEN)
+  #     )
+  #   end
+  # end
+  ######################## AUTENTICATION TOKEN ########################
 end
