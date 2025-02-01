@@ -353,6 +353,7 @@ DEPENDENCIES
   debug
   devise-i18n
   devise_token_auth
+  dotenv
   faker
   jbuilder
   kamal

@@ -49,6 +49,7 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
   # https://github.com/faker-ruby/faker?tab=readme-ov-file#faker
+  gem "dotenv"
   gem "faker"
   gem "letter_opener", "~> 1.10"
 end
