@@ -17,7 +17,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_15_234836) do
   create_table "addresses", force: :cascade do |t|
     t.string "street"
     t.string "city"
-    t.integer "contact_id", null: false
+    t.bigint "contact_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contact_id"], name: "index_addresses_on_contact_id"
@@ -29,7 +29,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_15_234836) do
     t.date "birthdate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "kind_id", null: false
+    t.bigint "kind_id", null: false
     t.index ["kind_id"], name: "index_contacts_on_kind_id"
   end
 
@@ -41,7 +41,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_15_234836) do
 
   create_table "phones", force: :cascade do |t|
     t.string "number"
-    t.integer "contact_id", null: false
+    t.bigint "contact_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contact_id"], name: "index_phones_on_contact_id"
@@ -59,10 +59,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_15_234836) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
     t.string "name"
     t.string "nickname"
     t.string "image"
-    t.string "email"
+    t.string "email", default: "", null: false
+    t.boolean "admin"
     t.text "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
