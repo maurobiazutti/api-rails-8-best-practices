@@ -25,7 +25,7 @@ json.data @contacts do |contact|
     json.data contact.phones do |phone|
       json.id phone.id
       json.number phone.number
-       json.contact_id phone.contact_id
+        json.contact_id phone.contact_id
     end
   end
 

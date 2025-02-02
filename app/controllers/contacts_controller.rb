@@ -20,7 +20,7 @@ class ContactsController < ApplicationController
   def index
     @contacts = current_user.contacts
 
-    render json: { contacts: @contacts }, status: :ok
+    # render json: @contacts, status: :ok
     # render json: @contacts #, include: [ kind: { only: :description }, phones: { only: [ :id, :number ] }, address: { only: [ :id, :street, :city ] } ]
   end
   # GET /contacts/1
