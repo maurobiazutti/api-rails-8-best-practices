@@ -1,21 +1,14 @@
 source "https://rubygems.org"
-
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.1"
-# Use sqlite3 as the database for Active Record
-# gem "sqlite3", ">= 2.1"
-
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
-
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
-
 # Authentification https://github.com/jwt/ruby-jwt
 # gem "jwt"
-
 # Authentification https://devise-token-auth.gitbook.io/devise-token-auth
 gem "devise_token_auth"
 # https://github.com/svenfuchs/rails-i18n
@@ -35,9 +28,7 @@ gem "kamal", require: false
 gem "thruster", require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 gem "rack-cors"
-
 gem "kaminari", "~> 1.2"
-
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
@@ -55,4 +46,3 @@ group :development, :test do
   gem "faker"
   gem "letter_opener", "~> 1.10"
 end
-
