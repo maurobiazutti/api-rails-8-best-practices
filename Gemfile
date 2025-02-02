@@ -27,4 +27,5 @@ group :development, :test do
   gem "dotenv"
   gem "faker"
   gem "letter_opener", "~> 1.10"
+  gem "rspec-rails", "~> 7.1"
 end
