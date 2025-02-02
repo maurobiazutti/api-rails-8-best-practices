@@ -15,7 +15,7 @@ user = User.create!(
   confirmed_at: Time.zone.now # Se estiver usando confirmação de e-mail
 )
 
-10.times do
+35.times do
   Contact.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,

@@ -11,14 +11,14 @@ class ContactsController < ApplicationController
   # include ActionController::HttpAuthentication::Token::ControllerMethods
   # before_action :authenticate
   ######################## AUTENTICATION TOKEN ########################
-
+  include Paginable
   before_action :authenticate_user!
   before_action :set_contact, only: %i[ show update destroy ]
 
 
   # GET /contacts
   def index
-    @contacts = current_user.contacts
+    @contacts = current_user.contacts.page(current_page).per(per_page)
 
     # render json: @contacts, status: :ok
     # render json: @contacts #, include: [ kind: { only: :description }, phones: { only: [ :id, :number ] }, address: { only: [ :id, :street, :city ] } ]

@@ -38,7 +38,28 @@ json.data @contacts do |contact|
     end
   end
 
-  json.set! :meta do
-    json.set! "author", "Mauro Biazutti"
+  # json.set! :meta do
+  #   json.set! "author", "Mauro Biazutti"
+  # end
+  #
+  json.meta do
+    json.author "Mauro Biazutti"
+    json.pagination do
+      json.current_page @contacts.current_page
+      json.prev_page @contacts.prev_page
+      json.next_page @contacts.next_page
+      json.total_pages @contacts.total_pages
+      json.total_count @contacts.total_count
+      json.per_page @contacts.limit_value
+    end
   end
+
+  json.links do
+    json.self contacts_url(page: @contacts.current_page, format: :json)
+    json.first contacts_url(page: 1, format: :json)
+    json.last contacts_url(page: @contacts.total_pages, format: :json)
+    json.prev contacts_url(page: @contacts.prev_page, format: :json) if @contacts.prev_page
+    json.next contacts_url(page: @contacts.next_page, format: :json) if @contacts.next_page
+  end
+
 end
