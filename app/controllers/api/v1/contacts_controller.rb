@@ -1,4 +1,4 @@
-class ContactsController < ApplicationController
+class Api::V1::ContactsController < ApplicationController
   ######################## AUTENTICATION BASIC ########################
   # To create a basic authentication
   # include ActionController::HttpAuthentication::Basic::ControllerMethods
