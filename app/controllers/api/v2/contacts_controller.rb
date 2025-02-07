@@ -11,14 +11,16 @@ class Api::V2::ContactsController < ApplicationController
   # include ActionController::HttpAuthentication::Token::ControllerMethods
   # before_action :authenticate
   ######################## AUTENTICATION TOKEN ########################
-  include Paginable
-  before_action :authenticate_user!
+  before_action :authenticate_api_user!
   before_action :set_contact, only: %i[ show update destroy ]
+  include Paginable
 
 
   # GET /contacts
   def index
-    @contacts = current_user.contacts.page(current_page).per(per_page)
+    @contacts = current_api_user.contacts.page(current_page).per(per_page)
+    # @contacts = current_api_user.contacts.all
+    
 
     # render json: @contacts, status: :ok
     # render json: @contacts #, include: [ kind: { only: :description }, phones: { only: [ :id, :number ] }, address: { only: [ :id, :street, :city ] } ]
@@ -30,10 +32,10 @@ class Api::V2::ContactsController < ApplicationController
 
   # POST /contacts
   def create
-    @contact = Contact.new(contact_params)
+    @contact = current_api_user.contacts.new(contact_params)
 
     if @contact.save
-      render json: @contact, status: :created, location: @contact
+      render json: @contact, status: :created #, location: @contact
     else
       render json: @contact.errors, status: :unprocessable_entity
     end
@@ -56,7 +58,7 @@ class Api::V2::ContactsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
-      @contact = Contact.find(params.expect(:id))
+      @contact = current_api_user.contacts.find(params.expect(:id))
     end
 
     # Only allow a list of trusted parameters through.

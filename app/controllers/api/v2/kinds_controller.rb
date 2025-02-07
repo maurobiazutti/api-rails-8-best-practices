@@ -1,5 +1,4 @@
 class Api::V2::KindsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_kind, only: %i[ show update destroy ]
 
   # GET /kinds
@@ -19,7 +18,7 @@ class Api::V2::KindsController < ApplicationController
     @kind = Kind.new(kind_params)
 
     if @kind.save
-      render json: @kind, status: :created, location: @kind
+      render json: @kind, status: :created #,  location: @kind
     else
       render json: @kind.errors, status: :unprocessable_entity
     end

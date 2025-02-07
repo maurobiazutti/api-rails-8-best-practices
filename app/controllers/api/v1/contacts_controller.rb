@@ -11,9 +11,9 @@ class Api::V1::ContactsController < ApplicationController
   # include ActionController::HttpAuthentication::Token::ControllerMethods
   # before_action :authenticate
   ######################## AUTENTICATION TOKEN ########################
-  include Paginable
   before_action :authenticate_user!
   before_action :set_contact, only: %i[ show update destroy ]
+  include Paginable
 
 
   # GET /contacts

@@ -26,7 +26,7 @@ json.data do
         json.id @contact.kind.id
         json.description @contact.kind.description
         json.links do
-          json.self kind_url(@contact.kind.id, format: :json)
+          # json.self kind_url(@contact.kind.id, format: :json)
           # json.self url_for(controller: 'kinds', action: 'show', id: contact.kind.id, format: :json)
         end
       end

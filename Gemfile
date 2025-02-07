@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 gem "rails", "~> 8.0.1"
 gem "pg", "~> 1.1"
-gem "puma", ">= 5.0"
+gem "puma", ">= 5.5.0"
 gem "jbuilder"
 gem "devise_token_auth"
 gem "devise-i18n"

@@ -14,14 +14,14 @@ json.data @contacts do |contact|
         json.id contact.kind.id
         json.description contact.kind.description
         json.links do
-          json.self kind_url(contact.kind.id, format: :json)
+          #json.self kind_url(contact.kind.id, format: :json)
           # json.self url_for(controller: 'kinds', action: 'show', id: contact.kind.id, format: :json)
         end
       end
     end
   end
 
-  json.phnes do
+  json.phones do
     json.data contact.phones do |phone|
       json.id phone.id
       json.number phone.number
@@ -54,12 +54,12 @@ json.data @contacts do |contact|
     end
   end
 
-  json.links do
-    json.self contacts_url(page: @contacts.current_page, format: :json)
-    json.first contacts_url(page: 1, format: :json)
-    json.last contacts_url(page: @contacts.total_pages, format: :json)
-    json.prev contacts_url(page: @contacts.prev_page, format: :json) if @contacts.prev_page
-    json.next contacts_url(page: @contacts.next_page, format: :json) if @contacts.next_page
-  end
+  # json.links do
+  #   json.self contacts_url(page: @contacts.current_page, format: :json)
+  #   json.first contacts_url(page: 1, format: :json)
+  #   json.last contacts_url(page: @contacts.total_pages, format: :json)
+  #   json.prev contacts_url(page: @contacts.prev_page, format: :json) if @contacts.prev_page
+  #   json.next contacts_url(page: @contacts.next_page, format: :json) if @contacts.next_page
+  # end
 
 end

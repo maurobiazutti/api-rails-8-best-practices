@@ -8,14 +8,14 @@ end
 
 # Criando um usuário padrão
 user = User.create!(
-  name: "Mauro Biazutti",
+  name: "Mauro",
   email: "mauro@email.com",
   password: "123456",
   password_confirmation: "123456",
   confirmed_at: Time.zone.now # Se estiver usando confirmação de e-mail
 )
 
-35.times do
+20.times do
   Contact.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
