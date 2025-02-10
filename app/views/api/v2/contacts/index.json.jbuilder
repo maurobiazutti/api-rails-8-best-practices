@@ -38,10 +38,6 @@ json.data @contacts do |contact|
     end
   end
 
-  # json.set! :meta do
-  #   json.set! "author", "Mauro Biazutti"
-  # end
-  #
   json.meta do
     json.author "Mauro Biazutti"
     json.pagination do
