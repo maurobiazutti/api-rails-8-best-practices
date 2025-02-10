@@ -14,7 +14,7 @@ json.data @contacts do |contact|
         json.id contact.kind.id
         json.description contact.kind.description
         json.links do
-          #json.self kind_url(contact.kind.id, format: :json)
+          # json.self kind_url(contact.kind.id, format: :json)
           # json.self url_for(controller: 'kinds', action: 'show', id: contact.kind.id, format: :json)
         end
       end
@@ -61,5 +61,4 @@ json.data @contacts do |contact|
   #   json.prev contacts_url(page: @contacts.prev_page, format: :json) if @contacts.prev_page
   #   json.next contacts_url(page: @contacts.next_page, format: :json) if @contacts.next_page
   # end
-
 end

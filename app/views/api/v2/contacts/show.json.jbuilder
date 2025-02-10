@@ -18,7 +18,7 @@ json.data do
       end
     end
   end
-  
+
   json.relationships do
     json.kind do
       json.data do
@@ -38,7 +38,7 @@ json.data do
       json.id phone.id
       json.number phone.number
       json.contact_id phone.contact_id
-    end 
+    end
   end
 
   json.address do
@@ -53,5 +53,4 @@ json.data do
   json.set! :meta do
     json.set! "author", "Mauro Biazutti"
   end
-
 end

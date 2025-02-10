@@ -18,7 +18,7 @@ class Api::V2::KindsController < ApplicationController
     @kind = Kind.new(kind_params)
 
     if @kind.save
-      render json: @kind, status: :created #,  location: @kind
+      render json: @kind, status: :created
     else
       render json: @kind.errors, status: :unprocessable_entity
     end

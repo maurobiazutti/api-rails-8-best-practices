@@ -19,15 +19,10 @@ class Api::V2::ContactsController < ApplicationController
   # GET /contacts
   def index
     @contacts = current_api_user.contacts.page(current_page).per(per_page)
-    # @contacts = current_api_user.contacts.all
-    
-
-    # render json: @contacts, status: :ok
-    # render json: @contacts #, include: [ kind: { only: :description }, phones: { only: [ :id, :number ] }, address: { only: [ :id, :street, :city ] } ]
   end
+
   # GET /contacts/1
   def show
-    # render json: @contact #, include: [ kind: { only: :description }, phones: { only: [ :id, :number ] }, address: { only: [ :id, :street, :city ] } ]
   end
 
   # POST /contacts
@@ -35,7 +30,7 @@ class Api::V2::ContactsController < ApplicationController
     @contact = current_api_user.contacts.new(contact_params)
 
     if @contact.save
-      render json: @contact, status: :created #, location: @contact
+      render json: @contact, status: :created
     else
       render json: @contact.errors, status: :unprocessable_entity
     end
@@ -75,7 +70,6 @@ class Api::V2::ContactsController < ApplicationController
                               address_attributes: [
                                 :street,
                                 :city
-                                # :contact_id
                               ] ])
     end
 
