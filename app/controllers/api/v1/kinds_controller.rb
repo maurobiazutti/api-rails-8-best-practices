@@ -1,12 +1,12 @@
 class Api::V1::KindsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_api_user!
   before_action :set_kind, only: %i[ show update destroy ]
 
   # GET /kinds
   def index
     @kinds = Kind.all
 
-    render json: @kinds
+    # render json: @kinds
   end
 
   # GET /kinds/1
@@ -19,7 +19,7 @@ class Api::V1::KindsController < ApplicationController
     @kind = Kind.new(kind_params)
 
     if @kind.save
-      render json: @kind, status: :created, location: @kind
+      render json: @kind, status: :created
     else
       render json: @kind.errors, status: :unprocessable_entity
     end

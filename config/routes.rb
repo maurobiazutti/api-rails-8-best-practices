@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       resources :kinds
     end
 
-     # scope module: :v2,
+    # scope module: :v2,
     namespace :v2 do
       # constraints: ApiConstraints.new(version: 2, default: true) do
       resources :contacts,  shallow: true do
