@@ -2,10 +2,10 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch("DB_USERNAME", "default_user") %>
-  password: <%= ENV.fetch("DB_PASSWORD", "default_password") %>
+  username: postgres
+  password: 784512mbl
   host: localhost
-  
+
 development:
   <<: *default
   database: notebook_api_development

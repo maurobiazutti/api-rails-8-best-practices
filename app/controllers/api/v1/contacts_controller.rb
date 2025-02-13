@@ -1,31 +1,14 @@
 class Api::V1::ContactsController < ApplicationController
-  ######################## AUTENTICATION BASIC ########################
-  # To create a basic authentication
-  # include ActionController::HttpAuthentication::Basic::ControllerMethods
-  # http_basic_authenticate_with name: "mauro", password: "123456"
-  ######################## AUTENTICATION BASIC ########################
-
-  ######################## AUTENTICATION TOKEN ########################
-  # To create a token authentication
-  # TOKEN = "mauro123"
-  # include ActionController::HttpAuthentication::Token::ControllerMethods
-  # before_action :authenticate
-  ######################## AUTENTICATION TOKEN ########################
   before_action :authenticate_api_user!
   before_action :set_contact, only: %i[ show update destroy ]
   include Paginable
 
-
   # GET /contacts
   def index
     @contacts = current_api_user.contacts.page(current_page).per(per_page)
-
-    # render json: @contacts, status: :ok
-    # render json: @contacts #, include: [ kind: { only: :description }, phones: { only: [ :id, :number ] }, address: { only: [ :id, :street, :city ] } ]
   end
   # GET /contacts/1
   def show
-    # render json: @contact #, include: [ kind: { only: :description }, phones: { only: [ :id, :number ] }, address: { only: [ :id, :street, :city ] } ]
   end
 
   # POST /contacts
@@ -73,18 +56,6 @@ class Api::V1::ContactsController < ApplicationController
                               address_attributes: [
                                 :street,
                                 :city
-                                # :contact_id
                               ] ])
     end
-
-  ######################## AUTENTICATION TOKEN ########################
-  # def authenticate
-  #   authenticate_or_request_with_http_token do |token, options|
-  #     ActiveSupport::SecurityUtils.secure_compare(
-  #       ::Digest::SHA256.hexdigest(token),
-  #       ::Digest::SHA256.hexdigest(TOKEN)
-  #     )
-  #   end
-  # end
-  ######################## AUTENTICATION TOKEN ########################
 end

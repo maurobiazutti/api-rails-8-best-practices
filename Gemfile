@@ -25,4 +25,6 @@ group :development, :test do
   gem "faker"
   gem "letter_opener", "~> 1.10"
   gem "rspec-rails", "~> 7.1"
+  gem "factory_bot_rails", "~> 6.4"
+  gem "database_cleaner-active_record"
 end
