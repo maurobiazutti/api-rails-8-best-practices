@@ -2,70 +2,39 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::ContactsController, type: :controller do
   let(:user) { create(:user) }
-  let(:contact) { create(:contact, user: user) }
-  let(:headers) do
-    {
-      'ACCEPT' => 'application/json',
-      'CONTENT_TYPE' => 'application/json',
-      'Authorization' => "Bearer #{user.create_new_auth_token['access-token']}"
-    }
+  let!(:contacts) { create_list(:contact, 5, user: user) }
+  let(:contact) { contacts.first }
+
+  before do
+    @auth_headers = user.create_new_auth_token  # Cria os headers de autenticação
+    request.headers.merge!(@auth_headers)       # Adiciona os headers na requisição
   end
 
-  describe 'GET #index' do
-    it 'retorna todos os contatos do usuário logado' do
-      # Crie alguns contatos para o usuário
-      create(user: user)
-      # Faça a requisição com o usuário logado
-      get :index, headers: headers
-      
-      # Verifique se a resposta foi bem-sucedida
+  describe 'Get #index' do
+    it 'returns a success response for json status 200' do
+    request.headers['Accept'] = 'application/json'
+      get :index
       expect(response).to have_http_status(:success)
-      
-      # Verifique se a resposta contém os contatos do usuário logado
-      expect(JSON.parse(response.body).size).to eq(3)
+    end
+
+    it 'returns a request not acceptable for xml status 406' do
+     request.headers['Accept'] = 'application/xml'  # Formato não suportado
+      get :index
+      expect(response).to have_http_status(:not_acceptable)
+    end
+
+    it 'retorna apenas os contatos do usuário autenticado' do
+      request.headers['Accept'] = 'application/json'
+      get :index
+      puts "Response status: #{response.status}"
+      puts "Response body: #{response.body}"  # Adiciona depuração para verificar o corpo da resposta
+      json_response = JSON.parse(response.body)
+      expect(json_response.size).to eq(5)
+
+      # Verifica se todos os IDs correspondem aos contatos do usuário autenticado
+      contact_ids = contacts.map(&:id)
+      json_ids = json_response.map { |contact| contact['id'] }
+      expect(json_ids).to match_array(contact_ids)
     end
   end
-
- ##################################################
-  # before do
-  #   sign_in user
-  # end
-
-  # describe "GET #index" do
-  #   it "returns a success response" do
-  #     get :index
-  #     expect(response).to be_successful
-  #   end
-  # end
-
-  # describe "GET #show" do
-  #   it "returns a success response" do
-  #     get :show, params: { id: contact.to_param }
-  #     expect(response).to be_successful
-  #   end
-  # end
-
-  # describe "POST #create" do
-  #   context "with valid params" do
-  #     it "creates a new Contact" do
-  #       expect {
-  #         post :create, params: { contact: attributes_for(:contact) }
-  #       }.to change(Contact, :count).by(1)
-  #     end
-
-  #     it "renders a JSON response with the new contact" do
-  #       post :create, params: { contact: attributes_for(:contact) }
-  #       expect(response).to have_http_status(:created)
-  #       expect(response.content_type).to eq('application/json; charset=utf-8')
-  #     end
-  #   end
-
-  #   context "with invalid params" do
-  #     it "renders a JSON response with errors for the new contact" do
-  #       post :create, params: { contact: attributes_for(:contact, name: nil) }
-  #       expect(response).to have_http_status(:unprocessable_entity)
-  #       expect(response.content_type).to eq('application/json; charset=utf-8')
-  #     end
-  #   end
-  # end
 end

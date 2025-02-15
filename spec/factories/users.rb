@@ -4,7 +4,7 @@ FactoryBot.define do
     nickname { Faker::Name.name }
     email { "user@example.com" }
     password { "123456" }
-    password_confirmation { password }
+    password_confirmation { "123456" }
     uid { email }
 
     factory :confirmed_user do
