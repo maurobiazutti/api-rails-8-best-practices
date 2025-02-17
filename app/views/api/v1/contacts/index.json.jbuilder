@@ -1,4 +1,3 @@
-# json.array! @contacts, partial: "api/v1/contacts/contact", as: :contact
 json.data @contacts do |contact|
   json.partial! "api/v1/contacts/contact", contact: contact
 end

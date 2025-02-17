@@ -1,5 +1,3 @@
-# json.extract! contact, :id, :name, :email, :birthdate, :kind_id, :user_id
-
 json.type "contacts"
 json.id contact.id
 json.attributes do
