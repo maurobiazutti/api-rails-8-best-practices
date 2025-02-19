@@ -8,7 +8,7 @@ class Api::V1::ContactsController < ApplicationController
     @contacts = current_api_user.contacts.page(current_page).per(per_page)
     # puts "Contacts: #{@contacts.inspect}"
     # render json: @contacts, status: :ok
-    render 'api/v1/contacts/index.json.jbuilder', status: :ok
+    # render 'api/v1/contacts/index.json.jbuilder', status: :ok
   end
   # GET /contacts/1
   def show
