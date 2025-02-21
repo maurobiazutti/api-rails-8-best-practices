@@ -4,7 +4,7 @@ class Api::V2::KindsController < ApplicationController
   # GET /kinds
   def index
     @kinds = Kind.all
-   # render json: @kinds
+    # render json: @kinds
   end
 
   # GET /kinds/1

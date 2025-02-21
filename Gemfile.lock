@@ -333,6 +333,8 @@ GEM
       rubocop-rails
     ruby-progressbar (1.13.0)
     securerandom (0.4.1)
+    shoulda-matchers (6.4.0)
+      activesupport (>= 5.2.0)
     solid_cable (3.0.5)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -362,6 +364,7 @@ GEM
     thruster (0.1.10-arm64-darwin)
     thruster (0.1.10-x86_64-darwin)
     thruster (0.1.10-x86_64-linux)
+    timeliness (0.5.2)
     timeout (0.4.3)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -370,6 +373,9 @@ GEM
     unicode-emoji (4.0.4)
     uri (1.0.3)
     useragent (0.16.11)
+    validates_timeliness (8.0.0)
+      activemodel (>= 8.0.0, < 9)
+      timeliness (>= 0.3.10, < 1)
     warden (1.2.9)
       rack (>= 2.0.9)
     websocket-driver (0.7.7)
@@ -411,11 +417,13 @@ DEPENDENCIES
   rails-i18n (~> 8.0.0)
   rspec-rails (~> 7.1)
   rubocop-rails-omakase
+  shoulda-matchers (~> 6.4)
   solid_cable
   solid_cache
   solid_queue
   thruster
   tzinfo-data
+  validates_timeliness (~> 8.0)
 
 BUNDLED WITH
    2.6.1
