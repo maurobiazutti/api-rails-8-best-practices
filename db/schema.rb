@@ -31,8 +31,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_01_011708) do
     t.datetime "updated_at", null: false
     t.bigint "kind_id", null: false
     t.bigint "user_id", null: false
-    t.index ["kind_id"], name: "index_contacts_on_kind_id"
-    t.index ["user_id"], name: "index_contacts_on_user_id"
+    t.index [ "kind_id" ], name: "index_contacts_on_kind_id"
+    t.index [ "user_id" ], name: "index_contacts_on_user_id"
   end
 
   create_table "kinds", force: :cascade do |t|

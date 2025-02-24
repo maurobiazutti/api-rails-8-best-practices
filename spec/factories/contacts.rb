@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :contact do
-    name { "John Doe" }
-    email { "jCt7G@example.com" }
-    birthdate { "1990-01-01" }
-    association :kind
+    name { Faker::Name.name }
+    email { Faker::Internet.email }
+    birthdate { "2006-03-21" }
+    kind { association :kind }
     association :user
   end
 end
