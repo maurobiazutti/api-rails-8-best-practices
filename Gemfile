@@ -15,6 +15,7 @@ gem "kamal", require: false
 gem "thruster", require: false
 gem "rack-cors"
 gem "kaminari", "~> 1.2"
+gem "validates_timeliness", "~> 8.0"
 
 
 group :development, :test do
@@ -26,5 +27,9 @@ group :development, :test do
   gem "letter_opener", "~> 1.10"
   gem "rspec-rails", "~> 7.1"
   gem "factory_bot_rails", "~> 6.4"
+end
+
+group :test do
+  gem "shoulda-matchers", "~> 6.4"
   gem "database_cleaner-active_record"
 end

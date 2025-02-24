@@ -27,7 +27,7 @@ end
 
 json.address do
   json.data do
-    json.id contact.address.id
+    json.id contact.address&.id
     json.street contact.address.street
     json.city contact.address.city
     json.contact_id contact.address.contact_id

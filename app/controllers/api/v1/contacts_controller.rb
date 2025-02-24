@@ -1,4 +1,5 @@
 class Api::V1::ContactsController < ApplicationController
+  respond_to :json
   before_action :authenticate_api_user!
   before_action :set_contact, only: %i[ show update destroy ]
   include Paginable
@@ -6,9 +7,7 @@ class Api::V1::ContactsController < ApplicationController
   # GET /contacts
   def index
     @contacts = current_api_user.contacts.page(current_page).per(per_page)
-    # puts "Contacts: #{@contacts.inspect}"
-    # render json: @contacts, status: :ok
-    # render 'api/v1/contacts/index.json.jbuilder', status: :ok
+    # render "/api/v1/contacts/index", status: :ok
   end
   # GET /contacts/1
   def show
