@@ -1,8 +1,8 @@
 module Api
   module V1
     class AddressesController < ApplicationController
-      before_action :set_contact, only: [:create]
-      before_action :set_address, only: [:show, :update, :destroy]
+      before_action :set_contact, only: [ :create ]
+      before_action :set_address, only: [ :show, :update, :destroy ]
 
       # GET /api/v1/addresses/:id
       def show
